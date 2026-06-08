@@ -1,200 +1,402 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eric Liu | Data Engineer</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
-    .hero-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.28), transparent 30%),
+        radial-gradient(circle at top right, rgba(168, 85, 247, 0.20), transparent 30%),
+        #020617;
     }
+
+    .glass {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      backdrop-filter: blur(16px);
+    }
+
     .card-hover {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.28s ease;
     }
+
     .card-hover:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      border-color: rgba(96, 165, 250, 0.7);
+      box-shadow: 0 24px 80px rgba(37, 99, 235, 0.22);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.42rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #bfdbfe;
+      background: rgba(30, 64, 175, 0.28);
+      border: 1px solid rgba(96, 165, 250, 0.28);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #60a5fa, #a78bfa, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .glow-btn {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.28);
     }
   </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
-  <!-- Navigation -->
-  <nav class="bg-white dark:bg-gray-900 border-b sticky top-0 z-50">
+
+<body class="text-slate-100">
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/70 border-b border-slate-800 backdrop-blur-xl">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold text-blue-600">Eric Liu</div>
-      <div class="flex gap-8 text-sm font-medium">
-        <a href="#about" class="hover:text-blue-600 transition-colors">关于</a>
-        <a href="#projects" class="hover:text-blue-600 transition-colors">项目</a>
-        <a href="#skills" class="hover:text-blue-600 transition-colors">技能</a>
-        <a href="#contact" class="hover:text-blue-600 transition-colors">联系</a>
+      <a href="#" class="text-xl font-bold gradient-text">Eric Liu</a>
+
+      <div class="hidden md:flex gap-8 text-sm text-slate-300">
+        <a href="#about" class="hover:text-blue-400 transition">About</a>
+        <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+        <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
+        <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
       </div>
-      <button onclick="toggleDarkMode()" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800">
-        <i class="fas fa-moon text-xl"></i>
-      </button>
+
+      <a href="mailto:liuxuhui905@gmail.com"
+         class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-blue-500/40 text-blue-300 hover:bg-blue-500/10 transition">
+        <i class="fa-solid fa-paper-plane"></i>
+        Contact
+      </a>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero-bg text-white py-24">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <div class="flex justify-center mb-6">
-        <div class="w-40 h-40 rounded-2xl overflow-hidden border-4 border-white/30">
-          <img src="https://via.placeholder.com/400" alt="Eric Liu" class="w-full h-full object-cover" />
-        </div>
-      </div>
-      <h1 class="text-5xl font-bold mb-4">Eric Liu</h1>
-      <p class="text-2xl text-blue-300 mb-6">Aspiring Data Engineer | B.A. Data Science @ UC Berkeley</p>
-      <p class="max-w-2xl mx-auto text-lg text-gray-300 mb-10">
-        专注于构建可靠、可扩展的数据管道与湖仓架构，热爱数据工程与自动化。
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <a href="https://github.com/Ericliu-eng" target="_blank"
-           class="px-8 py-4 bg-white text-gray-900 rounded-2xl font-semibold hover:bg-gray-100 transition flex items-center gap-3">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-        <a href="./resume.pdf" target="_blank"
-           class="px-8 py-4 border border-white/50 rounded-2xl font-semibold hover:bg-white/10 transition flex items-center gap-3">
-          <i class="fas fa-download"></i> 下载简历
-        </a>
-        <a href="mailto:liuxuhui905@email.com"
-           class="px-8 py-4 border border-white/50 rounded-2xl font-semibold hover:bg-white/10 transition flex items-center gap-3">
-          <i class="fas fa-envelope"></i> 联系我
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- HERO -->
+  <section class="min-h-screen flex items-center pt-24">
+    <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
 
-  <!-- About -->
-  <section id="about" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold mb-8">关于我</h2>
-    <div class="grid md:grid-cols-2 gap-12">
-      <div class="space-y-6 text-lg">
-        <p>
-          我是 UC Berkeley 数据科学专业的学生，目前专注于<strong>数据工程</strong>领域。
-          特别擅长设计和实现端到端数据管道，追求数据处理的可靠性和可重复性。
-        </p>
-        <p>
-          过去一年我专注于学习现代数据栈（Modern Data Stack），包括湖仓架构、数据质量保障和 CI/CD 实践。
-        </p>
-      </div>
       <div>
-        <h3 class="font-semibold mb-4 text-xl">目前正在学习</h3>
+        <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-sm">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+          Open to 2026 Data Engineering Internships
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+          Building Reliable
+          <span class="gradient-text">Data Systems</span>
+        </h1>
+
+        <p class="text-xl text-slate-300 mb-6 leading-relaxed">
+          I’m Eric Liu, a UC Berkeley Data Science student focused on data engineering,
+          ETL pipelines, data quality, CI/CD, and cloud-ready infrastructure.
+        </p>
+
+        <p class="text-slate-400 mb-10 max-w-xl">
+          I enjoy turning raw data into reliable, tested, and reproducible data workflows
+          that can support analytics, automation, and platform engineering.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="https://github.com/Ericliu-eng" target="_blank"
+             class="glow-btn px-7 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 transition font-semibold flex items-center gap-3">
+            <i class="fab fa-github"></i>
+            View GitHub
+          </a>
+
+          <a href="./resume.pdf" target="_blank"
+             class="px-7 py-4 rounded-2xl border border-slate-600 hover:border-blue-400 hover:bg-blue-500/10 transition font-semibold flex items-center gap-3">
+            <i class="fa-solid fa-file-arrow-down"></i>
+            Resume
+          </a>
+
+          <a href="#projects"
+             class="px-7 py-4 rounded-2xl border border-slate-600 hover:border-cyan-400 hover:bg-cyan-500/10 transition font-semibold flex items-center gap-3">
+            <i class="fa-solid fa-code"></i>
+            Projects
+          </a>
+        </div>
+      </div>
+
+      <!-- HERO CARD -->
+      <div class="glass rounded-[2rem] p-8 card-hover">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-2xl font-bold">
+            EL
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold">Eric Liu</h2>
+            <p class="text-slate-400">Data Engineer Portfolio</p>
+          </div>
+        </div>
+
+        <div class="space-y-5">
+          <div class="flex justify-between border-b border-slate-700 pb-4">
+            <span class="text-slate-400">Focus</span>
+            <span class="text-blue-300">Data Engineering</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-700 pb-4">
+            <span class="text-slate-400">School</span>
+            <span class="text-blue-300">UC Berkeley</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-700 pb-4">
+            <span class="text-slate-400">Core Stack</span>
+            <span class="text-blue-300">Python / SQL / CI</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">Goal</span>
+            <span class="text-blue-300">Data Platform / MLOps</span>
+          </div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+          <div class="rounded-2xl bg-slate-900/80 p-4">
+            <div class="text-2xl font-bold text-blue-400">ETL</div>
+            <div class="text-xs text-slate-400 mt-1">Pipelines</div>
+          </div>
+          <div class="rounded-2xl bg-slate-900/80 p-4">
+            <div class="text-2xl font-bold text-purple-400">CI</div>
+            <div class="text-xs text-slate-400 mt-1">Automation</div>
+          </div>
+          <div class="rounded-2xl bg-slate-900/80 p-4">
+            <div class="text-2xl font-bold text-cyan-400">DQ</div>
+            <div class="text-xs text-slate-400 mt-1">Quality</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-24">
+    <div class="mb-12">
+      <p class="text-blue-400 font-semibold mb-3">ABOUT</p>
+      <h2 class="text-4xl md:text-5xl font-bold">Engineering reliable data workflows.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="glass rounded-3xl p-8">
+        <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
+        <p class="text-slate-300 leading-relaxed">
+          I’m a UC Berkeley Data Science student building a portfolio around data engineering,
+          pipeline reliability, testing, and infrastructure fundamentals. My current work focuses
+          on production-style ETL systems with validation, automation, and reproducible workflows.
+        </p>
+      </div>
+
+      <div class="glass rounded-3xl p-8">
+        <h3 class="text-2xl font-semibold mb-4">Current Focus</h3>
         <div class="flex flex-wrap gap-3">
-          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">Apache Airflow</span>
-          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">dbt</span>
-          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">Snowflake</span>
-          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">Docker</span>
-          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">Great Expectations</span>
+          <span class="tag">Data Pipelines</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Pytest</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Orchestration</span>
+          <span class="tag">Data Quality</span>
+          <span class="tag">Cloud Infrastructure</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="bg-white dark:bg-gray-900 py-20">
+  <!-- PROJECTS -->
+  <section id="projects" class="py-24 bg-slate-950/60 border-y border-slate-800">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-12">精选项目</h2>
-      
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Project 1 -->
-        <div class="card-hover bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl overflow-hidden">
-          <div class="h-56 bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-            <span class="text-white text-6xl font-bold opacity-20">DLH</span>
+      <div class="mb-12">
+        <p class="text-blue-400 font-semibold mb-3">PROJECTS</p>
+        <h2 class="text-4xl md:text-5xl font-bold">Selected Engineering Work</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+
+        <!-- PROJECT 1 -->
+        <div class="glass rounded-[2rem] overflow-hidden card-hover">
+          <div class="h-56 bg-gradient-to-br from-blue-600 via-cyan-500 to-purple-600 flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.24),transparent_35%)]"></div>
+            <div class="text-7xl font-black text-white/20 tracking-widest">DLH</div>
           </div>
+
           <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-3">Data Lakehouse Pipeline（端到端）</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-6">
-              设计并实现完整 ETL 数据管道，支持数据摄入、校验、转换和持久化。使用 Makefile 管理工作流，Pytest 进行自动化测试，并通过 GitHub Actions 实现 CI/CD。
+            <h3 class="text-2xl font-bold mb-4">Data Lakehouse Pipeline</h3>
+
+            <p class="text-slate-300 leading-relaxed mb-6">
+              Built an end-to-end stock data pipeline using Python, PostgreSQL, pytest,
+              Makefile, GitHub Actions, and Terraform validation. The system supports raw data
+              ingestion, schema validation, incremental loading, quality checks, analytics marts,
+              smoke testing, and CI/CD reliability checks.
             </p>
-            <div class="flex flex-wrap gap-2 mb-6">
+
+            <ul class="space-y-3 text-slate-300 mb-6">
+              <li class="flex gap-3">
+                <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                Implemented schema validation and missing-field checks before loading data.
+              </li>
+              <li class="flex gap-3">
+                <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                Added pytest unit tests and smoke tests for pipeline reliability.
+              </li>
+              <li class="flex gap-3">
+                <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                Configured GitHub Actions CI for automated validation.
+              </li>
+              <li class="flex gap-3">
+                <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                Documented weekly progress with reproducible proof logs.
+              </li>
+            </ul>
+
+            <div class="flex flex-wrap gap-2 mb-8">
               <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">PostgreSQL</span>
               <span class="tag">ETL</span>
               <span class="tag">Pytest</span>
               <span class="tag">GitHub Actions</span>
+              <span class="tag">Terraform</span>
               <span class="tag">Makefile</span>
             </div>
-            <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline" target="_blank"
-               class="inline-flex items-center gap-2 text-blue-600 hover:underline font-medium">
-              查看项目 <i class="fas fa-arrow-right"></i>
-            </a>
+
+            <div class="flex flex-wrap gap-3">
+              <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline" target="_blank"
+                 class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition font-semibold">
+                GitHub
+              </a>
+              <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/blob/main/README.md" target="_blank"
+                 class="px-5 py-3 rounded-xl border border-slate-600 hover:border-blue-400 hover:bg-blue-500/10 transition">
+                README
+              </a>
+              <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/actions" target="_blank"
+                 class="px-5 py-3 rounded-xl border border-slate-600 hover:border-cyan-400 hover:bg-cyan-500/10 transition">
+                CI
+              </a>
+              <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/tree/main/docs/proof" target="_blank"
+                 class="px-5 py-3 rounded-xl border border-slate-600 hover:border-purple-400 hover:bg-purple-500/10 transition">
+                Proof Logs
+              </a>
+            </div>
           </div>
         </div>
 
-        <!-- 你可以继续添加更多项目卡片 -->
+        <!-- FUTURE PROJECT CARD -->
+        <div class="glass rounded-[2rem] p-8 card-hover flex flex-col justify-between">
+          <div>
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-2xl mb-6">
+              <i class="fa-solid fa-cloud"></i>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4">Cloud Data Infrastructure</h3>
+
+            <p class="text-slate-300 leading-relaxed mb-6">
+              A planned extension of my data engineering portfolio focused on cloud deployment,
+              scheduled ingestion, object storage, orchestration, monitoring, and production-style
+              documentation.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">AWS</span>
+              <span class="tag">S3</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Orchestration</span>
+              <span class="tag">Monitoring</span>
+            </div>
+          </div>
+
+          <p class="text-slate-500 mt-8 text-sm">
+            Status: In progress
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold mb-12">技能栈</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="font-semibold mb-6 text-lg">核心语言</h3>
-        <div class="space-y-4">
-          <div>Python <span class="float-right text-blue-600">★★★★★</span></div>
-          <div>SQL <span class="float-right text-blue-600">★★★★☆</span></div>
+  <!-- SKILLS -->
+  <section id="skills" class="max-w-6xl mx-auto px-6 py-24">
+    <div class="mb-12">
+      <p class="text-blue-400 font-semibold mb-3">SKILLS</p>
+      <h2 class="text-4xl md:text-5xl font-bold">Technical Stack</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="glass rounded-3xl p-8 card-hover">
+        <i class="fa-solid fa-code text-3xl text-blue-400 mb-5"></i>
+        <h3 class="text-xl font-bold mb-5">Languages</h3>
+        <div class="space-y-3 text-slate-300">
+          <p>Python</p>
+          <p>SQL</p>
+          <p>HTML / CSS</p>
+          <p>Bash basics</p>
         </div>
       </div>
-      <div>
-        <h3 class="font-semibold mb-6 text-lg">数据工程</h3>
-        <div class="space-y-4">
-          <div>Pandas / Polars</div>
-          <div>ETL Pipeline</div>
-          <div>Git & CI/CD</div>
-          <div>Data Quality</div>
+
+      <div class="glass rounded-3xl p-8 card-hover">
+        <i class="fa-solid fa-database text-3xl text-cyan-400 mb-5"></i>
+        <h3 class="text-xl font-bold mb-5">Data Engineering</h3>
+        <div class="space-y-3 text-slate-300">
+          <p>ETL Pipelines</p>
+          <p>Data Validation</p>
+          <p>Incremental Loading</p>
+          <p>Data Quality Checks</p>
+          <p>Analytics Marts</p>
         </div>
       </div>
-      <div>
-        <h3 class="font-semibold mb-6 text-lg">工具 & 平台</h3>
-        <div class="flex flex-wrap gap-3">
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-2xl text-sm">GitHub Actions</span>
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-2xl text-sm">Docker</span>
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-2xl text-sm">AWS / GCP</span>
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-2xl text-sm">Linux</span>
+
+      <div class="glass rounded-3xl p-8 card-hover">
+        <i class="fa-solid fa-gears text-3xl text-purple-400 mb-5"></i>
+        <h3 class="text-xl font-bold mb-5">Tools</h3>
+        <div class="space-y-3 text-slate-300">
+          <p>Git / GitHub</p>
+          <p>GitHub Actions</p>
+          <p>Pytest</p>
+          <p>Makefile</p>
+          <p>PostgreSQL</p>
+          <p>Terraform basics</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="bg-gray-900 text-white py-20">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-6">随时联系我</h2>
-      <p class="text-xl mb-10 text-gray-400">我正在寻找 2026 暑期数据工程实习机会</p>
-      <div class="flex justify-center gap-8 text-3xl">
-        <a href="https://github.com/Ericliu-eng" target="_blank"><i class="fab fa-github hover:text-blue-400 transition"></i></a>
-        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin hover:text-blue-400 transition"></i></a>
-        <a href="mailto:liuxuhui905@email.com"><i class="fas fa-envelope hover:text-blue-400 transition"></i></a>
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 border-t border-slate-800">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-blue-400 font-semibold mb-3">CONTACT</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Let’s connect.</h2>
+
+      <p class="text-slate-400 text-lg mb-10">
+        I’m currently looking for data engineering, data platform, and MLOps infrastructure internship opportunities.
+      </p>
+
+      <div class="flex justify-center gap-5 text-3xl">
+        <a href="https://github.com/Ericliu-eng" target="_blank"
+           class="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:text-blue-400 transition">
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://linkedin.com" target="_blank"
+           class="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:text-blue-400 transition">
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a href="mailto:liuxuhui905@gmail.com"
+           class="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:text-blue-400 transition">
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <footer class="py-8 text-center text-sm text-gray-500">
-    © 2026 Eric Liu • Built with ❤️ and Tailwind
+  <footer class="py-8 text-center text-sm text-slate-500 border-t border-slate-800">
+    © 2026 Eric Liu • Built with Tailwind CSS
   </footer>
 
-  <script>
-    // Tailwind script
-    function initTailwind() {
-      // You can add more custom config here if needed
-    }
-
-    // Dark mode
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    }
-
-    // Auto detect dark mode
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-
-    initTailwind();
-  </script>
 </body>
 </html>
