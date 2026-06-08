@@ -7,13 +7,16 @@
 
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #111827;
-      --muted: #6b7280;
-      --border: #e5e7eb;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
       --card: #ffffff;
-      --soft: #f9fafb;
+      --soft: #f1f5f9;
       --link: #2563eb;
+      --blue: #2563eb;
+      --cyan: #0891b2;
+      --green: #059669;
     }
 
     * {
@@ -23,9 +26,13 @@
     body {
       margin: 0;
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      background:
+        linear-gradient(rgba(37, 99, 235, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.035) 1px, transparent 1px),
+        var(--bg);
+      background-size: 36px 36px;
     }
 
     a {
@@ -38,51 +45,89 @@
     }
 
     .container {
-      max-width: 920px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    header {
-      padding: 56px 0 36px;
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 20px 0;
       border-bottom: 1px solid var(--border);
+      background: rgba(248, 250, 252, 0.86);
+      backdrop-filter: blur(12px);
     }
 
-    nav {
+    .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 72px;
-      font-size: 14px;
-    }
-
-    nav .name {
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    nav .links {
-      display: flex;
       gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
       flex-wrap: wrap;
     }
 
+    header {
+      padding: 76px 0 54px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 11px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.12);
+    }
+
     h1 {
-      font-size: 44px;
-      line-height: 1.1;
-      margin: 0 0 16px;
-      letter-spacing: -0.04em;
+      font-size: 52px;
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -0.05em;
+      max-width: 780px;
     }
 
     h2 {
-      font-size: 24px;
-      margin: 0 0 20px;
-      letter-spacing: -0.02em;
+      font-size: 26px;
+      margin: 0 0 22px;
+      letter-spacing: -0.03em;
     }
 
     h3 {
       font-size: 19px;
       margin: 0 0 10px;
+    }
+
+    h4 {
+      margin: 24px 0 10px;
+      font-size: 16px;
     }
 
     p {
@@ -92,7 +137,7 @@
     .subtitle {
       font-size: 20px;
       color: var(--muted);
-      max-width: 720px;
+      max-width: 780px;
       margin-bottom: 28px;
     }
 
@@ -106,13 +151,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 14px;
+      padding: 10px 15px;
       border: 1px solid var(--border);
       border-radius: 10px;
       color: var(--text);
       background: white;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .button.primary {
@@ -127,36 +172,37 @@
     }
 
     .button.primary:hover {
-      background: #374151;
+      background: #334155;
     }
 
     section {
-      padding: 44px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      padding: 46px 0;
+      border-top: 1px solid var(--border);
     }
 
     .card {
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px;
+      border-radius: 16px;
+      padding: 24px;
       background: var(--card);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.035);
     }
 
     .muted {
       color: var(--muted);
     }
 
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 18px;
     }
 
     .tag {
@@ -165,8 +211,9 @@
       border-radius: 999px;
       background: var(--soft);
       border: 1px solid var(--border);
-      color: #374151;
+      color: #334155;
       font-size: 13px;
+      font-weight: 500;
     }
 
     ul {
@@ -182,14 +229,136 @@
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 18px;
+      margin-top: 20px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(#2563eb, #0891b2);
+    }
+
+    .pipeline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 22px 0;
+    }
+
+    .stage {
+      padding: 8px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #f8fafc;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .pipeline span {
+      color: #94a3b8;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .metric {
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      color: #2563eb;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .metric span {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .terminal {
+      background: #0f172a;
+      color: #dbeafe;
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 22px 0;
+      font-size: 13px;
+    }
+
+    .terminal-bar {
+      display: flex;
+      gap: 7px;
+      padding: 10px 12px;
+      background: #111827;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .terminal-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #475569;
+    }
+
+    .terminal pre {
+      margin: 0;
+      padding: 18px;
+      overflow-x: auto;
+    }
+
+    .terminal code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .checks {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    .checks th,
+    .checks td {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .checks th {
+      color: #334155;
+      background: #f8fafc;
+    }
+
+    .checks td {
+      color: #64748b;
     }
 
     .skill-list {
       display: grid;
-      grid-template-columns: 160px 1fr;
+      grid-template-columns: 170px 1fr;
       gap: 12px;
       margin-bottom: 14px;
     }
@@ -198,22 +367,31 @@
       color: var(--text);
     }
 
+    .mini-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
     footer {
-      padding: 36px 0;
+      padding: 34px 0;
       color: var(--muted);
       font-size: 14px;
+      border-top: 1px solid var(--border);
     }
 
     @media (max-width: 720px) {
-      nav {
+      .nav-inner {
         align-items: flex-start;
-        gap: 16px;
         flex-direction: column;
-        margin-bottom: 48px;
       }
 
       h1 {
-        font-size: 36px;
+        font-size: 38px;
       }
 
       .subtitle {
@@ -222,6 +400,10 @@
 
       .grid {
         grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .skill-list {
@@ -233,24 +415,34 @@
 </head>
 
 <body>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#">Eric Liu</a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Pipeline</a>
+        <a href="#skills">Skills</a>
+        <a href="#focus">Focus</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
   <header>
     <div class="container">
-      <nav>
-        <a class="name" href="#">Eric Liu</a>
+      <div class="status">
+        <span class="dot"></span>
+        Open to 2026 Data Engineering Internships
+      </div>
 
-        <div class="links">
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-
-      <h1>Data Engineering Portfolio</h1>
+      <h1>Building reliable data pipelines from raw data to tested marts.</h1>
 
       <p class="subtitle">
-        UC Berkeley Data Science student building reliable ETL pipelines,
-        tested data workflows, and cloud-ready data infrastructure.
+        UC Berkeley Data Science student focused on data engineering, data platform systems,
+        ETL reliability, data quality, CI/CD, and cloud-ready infrastructure.
       </p>
 
       <div class="actions">
@@ -266,42 +458,149 @@
     <!-- ABOUT -->
     <section id="about">
       <div class="container">
-        <h2>About</h2>
+        <span class="mini-label">About</span>
+        <h2>Data engineering with an emphasis on reliability.</h2>
 
-        <p>
-          I’m Eric Liu, a Data Science student at UC Berkeley focused on data engineering,
-          data platform, and MLOps infrastructure. I enjoy building reproducible systems
-          that turn raw data into reliable, tested, and usable datasets.
-        </p>
+        <div class="grid">
+          <div class="card">
+            <h3>Who I Am</h3>
+            <p class="muted">
+              I’m Eric Liu, a Data Science student at UC Berkeley building a portfolio around
+              data engineering, data platform engineering, and MLOps infrastructure.
+            </p>
+            <p class="muted">
+              I enjoy building reproducible systems that turn raw data into reliable,
+              tested, and usable datasets.
+            </p>
+          </div>
 
-        <p class="muted">
-          My current work focuses on ETL pipelines, data validation, incremental loading,
-          CI/CD reliability, infrastructure basics, and clear engineering documentation.
-        </p>
+          <div class="card">
+            <h3>Target Roles</h3>
+            <p class="muted">
+              I’m currently looking for internships in data engineering, data platform,
+              MLOps infrastructure, and cloud data systems.
+            </p>
+            <div class="tags">
+              <span class="tag">Data Engineering Intern</span>
+              <span class="tag">Data Platform Intern</span>
+              <span class="tag">MLOps Infrastructure</span>
+              <span class="tag">Cloud Data Systems</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects">
       <div class="container">
-        <h2>Projects</h2>
+        <span class="mini-label">Selected Project</span>
+        <h2>Data Lakehouse Pipeline</h2>
 
-        <div class="card">
-          <h3>Data Lakehouse Pipeline</h3>
+        <div class="card project-card">
+          <h3>End-to-End Stock Data Pipeline</h3>
 
           <p class="muted">
-            End-to-end stock data pipeline with ingestion, validation, transformation,
-            incremental loading, marts, smoke tests, and CI/CD checks.
+            A production-style stock data pipeline that moves raw market data through ingestion,
+            validation, PostgreSQL loading, transformation, data quality checks, analytics marts,
+            and CI/CD reliability workflows.
           </p>
 
+          <!-- PIPELINE FLOW -->
+          <div class="pipeline">
+            <div class="stage">Ingest</div>
+            <span>→</span>
+            <div class="stage">Validate</div>
+            <span>→</span>
+            <div class="stage">Load</div>
+            <span>→</span>
+            <div class="stage">Transform</div>
+            <span>→</span>
+            <div class="stage">Quality</div>
+            <span>→</span>
+            <div class="stage">Marts</div>
+            <span>→</span>
+            <div class="stage">CI</div>
+          </div>
+
+          <!-- METRICS -->
+          <div class="metrics">
+            <div class="metric">
+              <strong>49+</strong>
+              <span>Tests Passing</span>
+            </div>
+
+            <div class="metric">
+              <strong>CI</strong>
+              <span>GitHub Actions</span>
+            </div>
+
+            <div class="metric">
+              <strong>Smoke</strong>
+              <span>End-to-End Checks</span>
+            </div>
+
+            <div class="metric">
+              <strong>DQ</strong>
+              <span>Data Quality</span>
+            </div>
+          </div>
+
           <ul>
-            <li>Built a Python ETL pipeline for raw stock market data.</li>
-            <li>Loaded validated data into PostgreSQL with incremental processing.</li>
-            <li>Added schema validation, missing-field checks, and data quality checks.</li>
-            <li>Created analytics marts for daily summaries and latest symbol prices.</li>
-            <li>Configured pytest, smoke tests, Makefile commands, and GitHub Actions CI.</li>
-            <li>Documented reproducible weekly proof logs and engineering decisions.</li>
+            <li>Built a Python ETL pipeline for raw stock market data from Alpha Vantage.</li>
+            <li>Designed PostgreSQL tables for raw market bars, metadata, watermarks, and analytics marts.</li>
+            <li>Implemented incremental loading using timestamp-based watermark logic.</li>
+            <li>Added schema validation, missing-field checks, freshness checks, range checks, and uniqueness checks.</li>
+            <li>Created analytics marts for daily symbol summaries, latest prices, and volume rankings.</li>
+            <li>Added pytest unit tests, smoke tests, Makefile commands, and GitHub Actions CI.</li>
+            <li>Added Terraform validation to prepare for cloud infrastructure workflows.</li>
+            <li>Documented orchestration design, operational metrics, and reproducible weekly proof logs.</li>
           </ul>
+
+          <!-- TERMINAL PREVIEW -->
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <pre><code>$ make test
+49 passed
+
+$ make smoke
+pipeline smoke test passed
+
+$ make terraform-validate
+terraform fmt, init, validate passed</code></pre>
+          </div>
+
+          <!-- DATA QUALITY TABLE -->
+          <h4>Data Quality Checks</h4>
+
+          <table class="checks">
+            <tr>
+              <th>Check</th>
+              <th>Purpose</th>
+            </tr>
+            <tr>
+              <td>Schema Validation</td>
+              <td>Verify required stock fields before loading raw market data.</td>
+            </tr>
+            <tr>
+              <td>Freshness Check</td>
+              <td>Detect stale or outdated pipeline output.</td>
+            </tr>
+            <tr>
+              <td>Uniqueness Check</td>
+              <td>Prevent duplicate market bar records.</td>
+            </tr>
+            <tr>
+              <td>Range Check</td>
+              <td>Validate price and volume values before downstream usage.</td>
+            </tr>
+            <tr>
+              <td>Smoke Test</td>
+              <td>Run an end-to-end validation of the local pipeline workflow.</td>
+            </tr>
+          </table>
 
           <div class="tags">
             <span class="tag">Python</span>
@@ -312,6 +611,8 @@
             <span class="tag">GitHub Actions</span>
             <span class="tag">Terraform</span>
             <span class="tag">Makefile</span>
+            <span class="tag">Data Quality</span>
+            <span class="tag">Orchestration</span>
           </div>
 
           <div class="project-links">
@@ -324,10 +625,45 @@
       </div>
     </section>
 
+    <!-- ROADMAP -->
+    <section>
+      <div class="container">
+        <span class="mini-label">Pipeline Roadmap</span>
+        <h2>Next engineering milestones.</h2>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Cloud Storage Layer</h3>
+            <p class="muted">
+              Add object storage for raw payload persistence and cloud-ready ingestion workflows.
+            </p>
+            <div class="tags">
+              <span class="tag">AWS S3</span>
+              <span class="tag">Raw Zone</span>
+              <span class="tag">Terraform</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Workflow Orchestration</h3>
+            <p class="muted">
+              Extend the pipeline with scheduled jobs, dependency management, retries, and observability.
+            </p>
+            <div class="tags">
+              <span class="tag">Airflow</span>
+              <span class="tag">Dagster</span>
+              <span class="tag">Monitoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SKILLS -->
     <section id="skills">
       <div class="container">
-        <h2>Skills</h2>
+        <span class="mini-label">Skills</span>
+        <h2>Technical stack.</h2>
 
         <div class="card">
           <div class="skill-list">
@@ -337,39 +673,68 @@
 
           <div class="skill-list">
             <strong>Data Engineering</strong>
-            <span>ETL pipelines, data validation, incremental loading, data quality checks, analytics marts</span>
+            <span>ETL pipelines, schema validation, incremental loading, data quality checks, analytics marts, smoke testing</span>
           </div>
 
           <div class="skill-list">
-            <strong>Tools</strong>
-            <span>Git, GitHub Actions, pytest, Makefile, PostgreSQL, Terraform basics</span>
+            <strong>Databases</strong>
+            <span>PostgreSQL, relational schema design, SQL queries, primary keys, aggregation marts</span>
+          </div>
+
+          <div class="skill-list">
+            <strong>Reliability</strong>
+            <span>pytest, CI/CD, GitHub Actions, Makefile workflows, reproducible commands, proof logs</span>
+          </div>
+
+          <div class="skill-list">
+            <strong>Infrastructure</strong>
+            <span>Terraform basics, Docker basics, cloud storage concepts, orchestration fundamentals</span>
           </div>
 
           <div class="skill-list">
             <strong>Currently Learning</strong>
-            <span>Docker, orchestration, cloud storage, dbt, Airflow</span>
+            <span>Airflow, dbt, AWS S3, monitoring, data observability, MLOps foundations</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CURRENT FOCUS -->
-    <section>
+    <!-- FOCUS AREAS -->
+    <section id="focus">
       <div class="container">
-        <h2>Current Focus</h2>
+        <span class="mini-label">Engineering Focus</span>
+        <h2>What I am building toward.</h2>
 
         <div class="grid">
           <div class="card">
             <h3>Pipeline Reliability</h3>
             <p class="muted">
-              Testing, smoke checks, validation, CI, and reproducible commands.
+              Validation, testing, CI checks, smoke tests, and reproducible workflows
+              so data pipelines can be trusted and maintained over time.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Data Quality & Observability</h3>
+            <p class="muted">
+              Freshness checks, schema checks, range checks, uniqueness checks,
+              metrics, logs, and operational visibility for data systems.
             </p>
           </div>
 
           <div class="card">
             <h3>Cloud Data Infrastructure</h3>
             <p class="muted">
-              Cloud storage, infrastructure-as-code, orchestration, and monitoring basics.
+              Object storage, infrastructure-as-code, workflow orchestration,
+              containerized development, and deployment automation.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>MLOps Infrastructure</h3>
+            <p class="muted">
+              Systems behind ML workflows, including data preparation,
+              feature pipelines, monitoring, reproducibility, and platform tooling.
             </p>
           </div>
         </div>
@@ -379,16 +744,19 @@
     <!-- CONTACT -->
     <section id="contact">
       <div class="container">
-        <h2>Contact</h2>
+        <span class="mini-label">Contact</span>
+        <h2>Let’s connect.</h2>
 
         <p class="muted">
-          I’m currently looking for data engineering, data platform, and MLOps infrastructure internship opportunities.
+          I’m currently looking for 2026 internship opportunities in data engineering,
+          data platform engineering, MLOps infrastructure, and cloud data systems.
         </p>
 
         <div class="actions">
           <a class="button primary" href="mailto:liuxuhui905@gmail.com">Email Me</a>
           <a class="button" href="https://github.com/Ericliu-eng" target="_blank">GitHub</a>
           <a class="button" href="https://www.linkedin.com/in/your-linkedin/" target="_blank">LinkedIn</a>
+          <a class="button" href="./resume.pdf" target="_blank">Resume</a>
         </div>
       </div>
     </section>
