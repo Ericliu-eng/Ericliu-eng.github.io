@@ -1,114 +1,200 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eric Liu | Data Engineer</title>
-
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fafafa; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-    h1 { margin: 0 0 8px; font-size: 34px; }
-    .sub { color: #666; margin-bottom: 20px; font-size: 16px; }
-
-    a { color: #0b66c3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      background: white;
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
     }
-
-    .card {
-      background: white;
-      border: 1px solid #eee;
-      border-radius: 12px;
-      padding: 18px;
-      margin: 16px 0;
-      transition: 0.2s;
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
-    .card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     }
-
-    .tag {
-      display: inline-block;
-      border: 1px solid #ddd;
-      border-radius: 999px;
-      padding: 6px 10px;
-      margin: 6px 6px 0 0;
-      font-size: 13px;
-      background: #f5f5f5;
-    }
-
-    h2 { margin-top: 30px; }
   </style>
 </head>
-
-<body>
-  <div class="wrap">
-
-    <!-- HEADER -->
-    <h1>Eric Liu</h1>
-    <div class="sub">Aspiring Data Engineer | B.A. Data Science @ UC Berkeley</div>
-
-    <div class="row">
-      <a class="btn" href="https://github.com/Ericliu-eng" target="_blank">GitHub</a>
-      <a class="btn" href="liuxuhui905@email.com" target="_blank">LinkedIn</a>
-      <a class="btn" href="./resume.pdf" target="_blank">Resume (PDF)</a>
-      <a class="btn" href="mailto:your@email.com">Email</a>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+  <!-- Navigation -->
+  <nav class="bg-white dark:bg-gray-900 border-b sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold text-blue-600">Eric Liu</div>
+      <div class="flex gap-8 text-sm font-medium">
+        <a href="#about" class="hover:text-blue-600 transition-colors">关于</a>
+        <a href="#projects" class="hover:text-blue-600 transition-colors">项目</a>
+        <a href="#skills" class="hover:text-blue-600 transition-colors">技能</a>
+        <a href="#contact" class="hover:text-blue-600 transition-colors">联系</a>
+      </div>
+      <button onclick="toggleDarkMode()" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800">
+        <i class="fas fa-moon text-xl"></i>
+      </button>
     </div>
+  </nav>
 
-    <!-- PROJECTS -->
-    <h2>Projects</h2>
-
-    <div class="card">
-      <h3>Data Lakehouse Pipeline (End-to-End)</h3>
-      <p>
-        Designed and implemented an end-to-end data pipeline (ETL) in Python,
-        including data ingestion, validation, transformation, and output persistence.
-        Built reproducible workflows with Makefile and automated testing via pytest.
-        Integrated CI/CD using GitHub Actions to ensure reliability and consistency.
+  <!-- Hero -->
+  <section class="hero-bg text-white py-24">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <div class="flex justify-center mb-6">
+        <div class="w-40 h-40 rounded-2xl overflow-hidden border-4 border-white/30">
+          <img src="https://via.placeholder.com/400" alt="Eric Liu" class="w-full h-full object-cover" />
+        </div>
+      </div>
+      <h1 class="text-5xl font-bold mb-4">Eric Liu</h1>
+      <p class="text-2xl text-blue-300 mb-6">Aspiring Data Engineer | B.A. Data Science @ UC Berkeley</p>
+      <p class="max-w-2xl mx-auto text-lg text-gray-300 mb-10">
+        专注于构建可靠、可扩展的数据管道与湖仓架构，热爱数据工程与自动化。
       </p>
-
-      <div class="row">
-        <a class="btn" href="https://github.com/Ericliu-eng/de-lakehouse-pipeline" target="_blank">GitHub</a>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="https://github.com/Ericliu-eng" target="_blank"
+           class="px-8 py-4 bg-white text-gray-900 rounded-2xl font-semibold hover:bg-gray-100 transition flex items-center gap-3">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="./resume.pdf" target="_blank"
+           class="px-8 py-4 border border-white/50 rounded-2xl font-semibold hover:bg-white/10 transition flex items-center gap-3">
+          <i class="fas fa-download"></i> 下载简历
+        </a>
+        <a href="mailto:liuxuhui905@email.com"
+           class="px-8 py-4 border border-white/50 rounded-2xl font-semibold hover:bg-white/10 transition flex items-center gap-3">
+          <i class="fas fa-envelope"></i> 联系我
+        </a>
       </div>
+    </div>
+  </section>
 
+  <!-- About -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-4xl font-bold mb-8">关于我</h2>
+    <div class="grid md:grid-cols-2 gap-12">
+      <div class="space-y-6 text-lg">
+        <p>
+          我是 UC Berkeley 数据科学专业的学生，目前专注于<strong>数据工程</strong>领域。
+          特别擅长设计和实现端到端数据管道，追求数据处理的可靠性和可重复性。
+        </p>
+        <p>
+          过去一年我专注于学习现代数据栈（Modern Data Stack），包括湖仓架构、数据质量保障和 CI/CD 实践。
+        </p>
+      </div>
       <div>
-        <span class="tag">Python</span>
-        <span class="tag">ETL</span>
-        <span class="tag">CI/CD</span>
-        <span class="tag">Pytest</span>
-        <span class="tag">Makefile</span>
-        <span class="tag">Data Engineering</span>
+        <h3 class="font-semibold mb-4 text-xl">目前正在学习</h3>
+        <div class="flex flex-wrap gap-3">
+          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">Apache Airflow</span>
+          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">dbt</span>
+          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">Snowflake</span>
+          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">Docker</span>
+          <span class="px-5 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-2xl text-sm">Great Expectations</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- SKILLS -->
-    <h2>Skills</h2>
-    <div>
-      <span class="tag">Python</span>
-      <span class="tag">SQL</span>
-      <span class="tag">Git</span>
-      <span class="tag">GitHub Actions</span>
-      <span class="tag">Pandas</span>
+  <!-- Projects -->
+  <section id="projects" class="bg-white dark:bg-gray-900 py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12">精选项目</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="card-hover bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl overflow-hidden">
+          <div class="h-56 bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+            <span class="text-white text-6xl font-bold opacity-20">DLH</span>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-semibold mb-3">Data Lakehouse Pipeline（端到端）</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+              设计并实现完整 ETL 数据管道，支持数据摄入、校验、转换和持久化。使用 Makefile 管理工作流，Pytest 进行自动化测试，并通过 GitHub Actions 实现 CI/CD。
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">Python</span>
+              <span class="tag">ETL</span>
+              <span class="tag">Pytest</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Makefile</span>
+            </div>
+            <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline" target="_blank"
+               class="inline-flex items-center gap-2 text-blue-600 hover:underline font-medium">
+              查看项目 <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 你可以继续添加更多项目卡片 -->
+      </div>
     </div>
+  </section>
 
-    <!-- ABOUT -->
-    <h2>About</h2>
-    <p>
-      I'm a UC Berkeley Data Science student focused on building reliable and reproducible
-      data systems. I’m particularly interested in data engineering, ETL pipelines, and
-      scalable data infrastructure.
-    </p>
+  <!-- Skills -->
+  <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-4xl font-bold mb-12">技能栈</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="font-semibold mb-6 text-lg">核心语言</h3>
+        <div class="space-y-4">
+          <div>Python <span class="float-right text-blue-600">★★★★★</span></div>
+          <div>SQL <span class="float-right text-blue-600">★★★★☆</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-6 text-lg">数据工程</h3>
+        <div class="space-y-4">
+          <div>Pandas / Polars</div>
+          <div>ETL Pipeline</div>
+          <div>Git & CI/CD</div>
+          <div>Data Quality</div>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-6 text-lg">工具 & 平台</h3>
+        <div class="flex flex-wrap gap-3">
+          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-2xl text-sm">GitHub Actions</span>
+          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-2xl text-sm">Docker</span>
+          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-2xl text-sm">AWS / GCP</span>
+          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-2xl text-sm">Linux</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </div>
+  <!-- Contact -->
+  <section id="contact" class="bg-gray-900 text-white py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-6">随时联系我</h2>
+      <p class="text-xl mb-10 text-gray-400">我正在寻找 2026 暑期数据工程实习机会</p>
+      <div class="flex justify-center gap-8 text-3xl">
+        <a href="https://github.com/Ericliu-eng" target="_blank"><i class="fab fa-github hover:text-blue-400 transition"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin hover:text-blue-400 transition"></i></a>
+        <a href="mailto:liuxuhui905@email.com"><i class="fas fa-envelope hover:text-blue-400 transition"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-sm text-gray-500">
+    © 2026 Eric Liu • Built with ❤️ and Tailwind
+  </footer>
+
+  <script>
+    // Tailwind script
+    function initTailwind() {
+      // You can add more custom config here if needed
+    }
+
+    // Dark mode
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+
+    // Auto detect dark mode
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+
+    initTailwind();
+  </script>
 </body>
 </html>
