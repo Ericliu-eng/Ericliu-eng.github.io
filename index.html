@@ -11,48 +11,42 @@
   <style>
     body {
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      /* 调低光晕饱和度，更克制、高级 */
       background:
-        radial-gradient(circle at top left, rgba(59, 130, 246, 0.28), transparent 30%),
-        radial-gradient(circle at top right, rgba(168, 85, 247, 0.20), transparent 30%),
-        #020617;
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 35%),
+        radial-gradient(circle at top right, rgba(168, 85, 247, 0.05), transparent 35%),
+        #030712;
     }
 
     .glass {
-      background: rgba(15, 23, 42, 0.72);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      backdrop-filter: blur(16px);
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
     }
 
     .card-hover {
-      transition: all 0.28s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .card-hover:hover {
-      transform: translateY(-8px);
-      border-color: rgba(96, 165, 250, 0.7);
-      box-shadow: 0 24px 80px rgba(37, 99, 235, 0.22);
+      transform: translateY(-4px); /* 悬浮高度减半，更沉稳 */
+      border-color: rgba(59, 130, 246, 0.35);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5); /* 摒弃彩色发光，改用扎实的暗阴影 */
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
-      padding: 0.42rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      color: #bfdbfe;
-      background: rgba(30, 64, 175, 0.28);
-      border: 1px solid rgba(96, 165, 250, 0.28);
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px; /* 摒弃圆角胶囊，改用方角，更有工业严谨感 */
+      font-size: 0.75rem;
+      color: #93c5fd;
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(96, 165, 250, 0.15);
     }
 
-    .gradient-text {
-      background: linear-gradient(90deg, #60a5fa, #a78bfa, #22d3ee);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .glow-btn {
-      box-shadow: 0 0 30px rgba(59, 130, 246, 0.28);
+    .highlight-text {
+      color: #60a5fa; /* 核心词汇改用干净的亮蓝色 */
     }
   </style>
 </head>
@@ -60,114 +54,115 @@
 <body class="text-slate-100">
 
   <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/70 border-b border-slate-800 backdrop-blur-xl">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 border-b border-slate-900 backdrop-blur-xl">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-xl font-bold gradient-text">Eric Liu</a>
+      <a href="#" class="text-xl font-bold tracking-tight text-white hover:text-blue-400 transition">Eric Liu</a>
 
-      <div class="hidden md:flex gap-8 text-sm text-slate-300">
-        <a href="#about" class="hover:text-blue-400 transition">About</a>
-        <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
-        <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
-        <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+      <div class="hidden md:flex gap-8 text-sm text-slate-400">
+        <a href="#about" class="hover:text-slate-200 transition">About</a>
+        <a href="#projects" class="hover:text-slate-200 transition">Projects</a>
+        <a href="#skills" class="hover:text-slate-200 transition">Skills</a>
+        <a href="#contact" class="hover:text-slate-200 transition">Contact</a>
       </div>
 
       <a href="mailto:liuxuhui905@gmail.com"
-         class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-blue-500/40 text-blue-300 hover:bg-blue-500/10 transition">
-        <i class="fa-solid fa-paper-plane"></i>
+         class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 transition text-sm">
+        <i class="fa-solid fa-paper-plane text-xs"></i>
         Contact
       </a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="min-h-screen flex items-center pt-24">
+  <section class="min-h-screen flex items-center pt-20">
     <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
 
       <div>
-        <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-sm">
-          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          Open to 2026 Data Engineering Internships
+        <!-- 移除了闪烁动画，文字描述更严谨 -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-md border border-blue-500/20 bg-blue-500/5 text-blue-400 text-xs font-medium">
+          <span class="w-2 h-2 rounded-full bg-green-500"></span>
+          Available for 2027 Full-Time & 2026/2027 Internships
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-          Building Reliable
-          <span class="gradient-text">Data Systems</span>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-none mb-6 text-white">
+          Building Reliable<br />
+          <span class="highlight-text">Data Systems</span>
         </h1>
 
-        <p class="text-xl text-slate-300 mb-6 leading-relaxed">
+        <p class="text-lg text-slate-300 mb-6 leading-relaxed">
           I’m Eric Liu, a UC Berkeley Data Science student focused on data engineering,
           ETL pipelines, data quality, CI/CD, and cloud-ready infrastructure.
         </p>
 
-        <p class="text-slate-400 mb-10 max-w-xl">
+        <p class="text-slate-400 mb-10 max-w-xl text-sm leading-relaxed">
           I enjoy turning raw data into reliable, tested, and reproducible data workflows
           that can support analytics, automation, and platform engineering.
         </p>
 
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-4 text-sm">
           <a href="https://github.com/Ericliu-eng" target="_blank"
-             class="glow-btn px-7 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 transition font-semibold flex items-center gap-3">
+             class="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition font-semibold flex items-center gap-2">
             <i class="fab fa-github"></i>
             View GitHub
           </a>
 
           <a href="./resume.pdf" target="_blank"
-             class="px-7 py-4 rounded-2xl border border-slate-600 hover:border-blue-400 hover:bg-blue-500/10 transition font-semibold flex items-center gap-3">
-            <i class="fa-solid fa-file-arrow-down"></i>
+             class="px-6 py-3.5 rounded-xl border border-slate-800 bg-slate-900/40 hover:border-slate-700 hover:bg-slate-900 transition font-semibold flex items-center gap-2">
+            <i class="fa-solid fa-file-arrow-down text-slate-400"></i>
             Resume
           </a>
 
           <a href="#projects"
-             class="px-7 py-4 rounded-2xl border border-slate-600 hover:border-cyan-400 hover:bg-cyan-500/10 transition font-semibold flex items-center gap-3">
-            <i class="fa-solid fa-code"></i>
+             class="px-6 py-3.5 rounded-xl border border-slate-800 bg-slate-900/40 hover:border-slate-700 hover:bg-slate-900 transition font-semibold flex items-center gap-2">
+            <i class="fa-solid fa-code text-slate-400"></i>
             Projects
           </a>
         </div>
       </div>
 
       <!-- HERO CARD -->
-      <div class="glass rounded-[2rem] p-8 card-hover">
+      <div class="glass rounded-3xl p-8 card-hover">
         <div class="flex items-center gap-4 mb-8">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-2xl font-bold">
+          <div class="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-xl font-bold text-blue-400">
             EL
           </div>
           <div>
-            <h2 class="text-2xl font-bold">Eric Liu</h2>
-            <p class="text-slate-400">Data Engineer Portfolio</p>
+            <h2 class="text-xl font-bold text-white">Eric Liu</h2>
+            <p class="text-xs text-slate-400">Data Engineering Portfolio</p>
           </div>
         </div>
 
-        <div class="space-y-5">
-          <div class="flex justify-between border-b border-slate-700 pb-4">
+        <div class="space-y-4 text-sm">
+          <div class="flex justify-between border-b border-slate-900 pb-3">
             <span class="text-slate-400">Focus</span>
-            <span class="text-blue-300">Data Engineering</span>
+            <span class="text-slate-200 font-medium">Data Engineering</span>
           </div>
-          <div class="flex justify-between border-b border-slate-700 pb-4">
+          <div class="flex justify-between border-b border-slate-900 pb-3">
             <span class="text-slate-400">School</span>
-            <span class="text-blue-300">UC Berkeley</span>
+            <span class="text-slate-200 font-medium">UC Berkeley</span>
           </div>
-          <div class="flex justify-between border-b border-slate-700 pb-4">
+          <div class="flex justify-between border-b border-slate-900 pb-3">
             <span class="text-slate-400">Core Stack</span>
-            <span class="text-blue-300">Python / SQL / CI</span>
+            <span class="text-slate-200 font-medium">Python / SQL / CI</span>
           </div>
           <div class="flex justify-between">
             <span class="text-slate-400">Goal</span>
-            <span class="text-blue-300">Data Platform / MLOps</span>
+            <span class="text-slate-200 font-medium">Data Platform / MLOps</span>
           </div>
         </div>
 
-        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
-          <div class="rounded-2xl bg-slate-900/80 p-4">
-            <div class="text-2xl font-bold text-blue-400">ETL</div>
-            <div class="text-xs text-slate-400 mt-1">Pipelines</div>
+        <div class="mt-8 grid grid-cols-3 gap-3 text-center">
+          <div class="rounded-xl bg-slate-950 p-3 border border-slate-900">
+            <div class="text-lg font-bold text-blue-400">ETL</div>
+            <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">Pipelines</div>
           </div>
-          <div class="rounded-2xl bg-slate-900/80 p-4">
-            <div class="text-2xl font-bold text-purple-400">CI</div>
-            <div class="text-xs text-slate-400 mt-1">Automation</div>
+          <div class="rounded-xl bg-slate-950 p-3 border border-slate-900">
+            <div class="text-lg font-bold text-purple-400">CI</div>
+            <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">Automation</div>
           </div>
-          <div class="rounded-2xl bg-slate-900/80 p-4">
-            <div class="text-2xl font-bold text-cyan-400">DQ</div>
-            <div class="text-xs text-slate-400 mt-1">Quality</div>
+          <div class="rounded-xl bg-slate-950 p-3 border border-slate-900">
+            <div class="text-lg font-bold text-cyan-400">DQ</div>
+            <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">Quality</div>
           </div>
         </div>
       </div>
@@ -178,23 +173,23 @@
   <!-- ABOUT -->
   <section id="about" class="max-w-6xl mx-auto px-6 py-24">
     <div class="mb-12">
-      <p class="text-blue-400 font-semibold mb-3">ABOUT</p>
-      <h2 class="text-4xl md:text-5xl font-bold">Engineering reliable data workflows.</h2>
+      <p class="text-blue-400 text-xs font-bold tracking-widest uppercase mb-2">About</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Engineering reliable data workflows.</h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8">
-      <div class="glass rounded-3xl p-8">
-        <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
-        <p class="text-slate-300 leading-relaxed">
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-bold mb-4 text-white">Who I Am</h3>
+        <p class="text-slate-300 leading-relaxed text-sm">
           I’m a UC Berkeley Data Science student building a portfolio around data engineering,
           pipeline reliability, testing, and infrastructure fundamentals. My current work focuses
           on production-style ETL systems with validation, automation, and reproducible workflows.
         </p>
       </div>
 
-      <div class="glass rounded-3xl p-8">
-        <h3 class="text-2xl font-semibold mb-4">Current Focus</h3>
-        <div class="flex flex-wrap gap-3">
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-bold mb-4 text-white">Current Focus</h3>
+        <div class="flex flex-wrap gap-2">
           <span class="tag">Data Pipelines</span>
           <span class="tag">PostgreSQL</span>
           <span class="tag">Pytest</span>
@@ -209,48 +204,48 @@
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects" class="py-24 bg-slate-950/60 border-y border-slate-800">
+  <section id="projects" class="py-24 bg-slate-950/40 border-y border-slate-900">
     <div class="max-w-6xl mx-auto px-6">
       <div class="mb-12">
-        <p class="text-blue-400 font-semibold mb-3">PROJECTS</p>
-        <h2 class="text-4xl md:text-5xl font-bold">Selected Engineering Work</h2>
+        <p class="text-blue-400 text-xs font-bold tracking-widest uppercase mb-2">Projects</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Selected Engineering Work</h2>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-8">
 
         <!-- PROJECT 1 -->
-        <div class="glass rounded-[2rem] overflow-hidden card-hover">
-          <div class="h-56 bg-gradient-to-br from-blue-600 via-cyan-500 to-purple-600 flex items-center justify-center relative">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.24),transparent_35%)]"></div>
-            <div class="text-7xl font-black text-white/20 tracking-widest">DLH</div>
+        <div class="glass rounded-2xl overflow-hidden card-hover">
+          <!-- 调暗了项目头图背景色，突出色块的高级感 -->
+          <div class="h-48 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 flex items-center justify-center border-b border-slate-900">
+            <div class="text-5xl font-black text-slate-800 tracking-wider">DLH</div>
           </div>
 
           <div class="p-8">
-            <h3 class="text-2xl font-bold mb-4">Data Lakehouse Pipeline</h3>
+            <h3 class="text-xl font-bold mb-4 text-white">Data Lakehouse Pipeline</h3>
 
-            <p class="text-slate-300 leading-relaxed mb-6">
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
               Built an end-to-end stock data pipeline using Python, PostgreSQL, pytest,
               Makefile, GitHub Actions, and Terraform validation. The system supports raw data
               ingestion, schema validation, incremental loading, quality checks, analytics marts,
               smoke testing, and CI/CD reliability checks.
             </p>
 
-            <ul class="space-y-3 text-slate-300 mb-6">
-              <li class="flex gap-3">
-                <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
-                Implemented schema validation and missing-field checks before loading data.
+            <ul class="space-y-3 text-slate-300 text-sm mb-6">
+              <li class="flex gap-2.5">
+                <i class="fa-solid fa-check text-blue-400 mt-1 text-xs"></i>
+                <span>Implemented schema validation and missing-field checks before loading data.</span>
               </li>
-              <li class="flex gap-3">
-                <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
-                Added pytest unit tests and smoke tests for pipeline reliability.
+              <li class="flex gap-2.5">
+                <i class="fa-solid fa-check text-blue-400 mt-1 text-xs"></i>
+                <span>Added pytest unit tests and smoke tests for pipeline reliability.</span>
               </li>
-              <li class="flex gap-3">
-                <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
-                Configured GitHub Actions CI for automated validation.
+              <li class="flex gap-2.5">
+                <i class="fa-solid fa-check text-blue-400 mt-1 text-xs"></i>
+                <span>Configured GitHub Actions CI for automated validation.</span>
               </li>
-              <li class="flex gap-3">
-                <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
-                Documented weekly progress with reproducible proof logs.
+              <li class="flex gap-2.5">
+                <i class="fa-solid fa-check text-blue-400 mt-1 text-xs"></i>
+                <span>Documented weekly progress with reproducible proof logs.</span>
               </li>
             </ul>
 
@@ -265,21 +260,21 @@
               <span class="tag">Makefile</span>
             </div>
 
-            <div class="flex flex-wrap gap-3">
+            <div class="flex flex-wrap gap-3 text-xs font-semibold">
               <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline" target="_blank"
-                 class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition font-semibold">
+                 class="px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition">
                 GitHub
               </a>
               <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/blob/main/README.md" target="_blank"
-                 class="px-5 py-3 rounded-xl border border-slate-600 hover:border-blue-400 hover:bg-blue-500/10 transition">
+                 class="px-4 py-2.5 rounded-lg border border-slate-800 bg-slate-900/30 hover:border-slate-700 text-slate-300 transition">
                 README
               </a>
               <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/actions" target="_blank"
-                 class="px-5 py-3 rounded-xl border border-slate-600 hover:border-cyan-400 hover:bg-cyan-500/10 transition">
+                 class="px-4 py-2.5 rounded-lg border border-slate-800 bg-slate-900/30 hover:border-slate-700 text-slate-300 transition">
                 CI
               </a>
               <a href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/tree/main/docs/proof" target="_blank"
-                 class="px-5 py-3 rounded-xl border border-slate-600 hover:border-purple-400 hover:bg-purple-500/10 transition">
+                 class="px-4 py-2.5 rounded-lg border border-slate-800 bg-slate-900/30 hover:border-slate-700 text-slate-300 transition">
                 Proof Logs
               </a>
             </div>
@@ -287,18 +282,16 @@
         </div>
 
         <!-- FUTURE PROJECT CARD -->
-        <div class="glass rounded-[2rem] p-8 card-hover flex flex-col justify-between">
+        <div class="glass rounded-2xl p-8 card-hover flex flex-col justify-between">
           <div>
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-2xl mb-6">
+            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-xl text-purple-400 mb-6">
               <i class="fa-solid fa-cloud"></i>
             </div>
 
-            <h3 class="text-2xl font-bold mb-4">Cloud Data Infrastructure</h3>
+            <h3 class="text-xl font-bold mb-4 text-white">Cloud Data Infrastructure</h3>
 
-            <p class="text-slate-300 leading-relaxed mb-6">
-              A planned extension of my data engineering portfolio focused on cloud deployment,
-              scheduled ingestion, object storage, orchestration, monitoring, and production-style
-              documentation.
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              A planned extension of my data engineering portfolio. Currently designing local Docker-based containerized environments, with plans to transition workloads to AWS S3 storage and ECS orchestrators via fully modular Terraform scripts.
             </p>
 
             <div class="flex flex-wrap gap-2">
@@ -310,9 +303,10 @@
             </div>
           </div>
 
-          <p class="text-slate-500 mt-8 text-sm">
-            Status: In progress
-          </p>
+          <div class="flex items-center gap-2 text-slate-500 mt-8 text-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            <span>Status: Environment setup & architecture design in progress</span>
+          </div>
         </div>
 
       </div>
@@ -322,15 +316,15 @@
   <!-- SKILLS -->
   <section id="skills" class="max-w-6xl mx-auto px-6 py-24">
     <div class="mb-12">
-      <p class="text-blue-400 font-semibold mb-3">SKILLS</p>
-      <h2 class="text-4xl md:text-5xl font-bold">Technical Stack</h2>
+      <p class="text-blue-400 text-xs font-bold tracking-widest uppercase mb-2">Skills</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Technical Stack</h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="glass rounded-3xl p-8 card-hover">
-        <i class="fa-solid fa-code text-3xl text-blue-400 mb-5"></i>
-        <h3 class="text-xl font-bold mb-5">Languages</h3>
-        <div class="space-y-3 text-slate-300">
+    <div class="grid md:grid-cols-3 gap-8 text-sm">
+      <div class="glass rounded-2xl p-8 card-hover">
+        <i class="fa-solid fa-code text-2xl text-blue-400 mb-5"></i>
+        <h3 class="text-lg font-bold mb-4 text-white">Languages</h3>
+        <div class="space-y-2.5 text-slate-300">
           <p>Python</p>
           <p>SQL</p>
           <p>HTML / CSS</p>
@@ -338,10 +332,10 @@
         </div>
       </div>
 
-      <div class="glass rounded-3xl p-8 card-hover">
-        <i class="fa-solid fa-database text-3xl text-cyan-400 mb-5"></i>
-        <h3 class="text-xl font-bold mb-5">Data Engineering</h3>
-        <div class="space-y-3 text-slate-300">
+      <div class="glass rounded-2xl p-8 card-hover">
+        <i class="fa-solid fa-database text-2xl text-cyan-400 mb-5"></i>
+        <h3 class="text-lg font-bold mb-4 text-white">Data Engineering</h3>
+        <div class="space-y-2.5 text-slate-300">
           <p>ETL Pipelines</p>
           <p>Data Validation</p>
           <p>Incremental Loading</p>
@@ -350,10 +344,10 @@
         </div>
       </div>
 
-      <div class="glass rounded-3xl p-8 card-hover">
-        <i class="fa-solid fa-gears text-3xl text-purple-400 mb-5"></i>
-        <h3 class="text-xl font-bold mb-5">Tools</h3>
-        <div class="space-y-3 text-slate-300">
+      <div class="glass rounded-2xl p-8 card-hover">
+        <i class="fa-solid fa-gears text-2xl text-purple-400 mb-5"></i>
+        <h3 class="text-lg font-bold mb-4 text-white">Tools & Infra</h3>
+        <div class="space-y-2.5 text-slate-300">
           <p>Git / GitHub</p>
           <p>GitHub Actions</p>
           <p>Pytest</p>
@@ -366,35 +360,36 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-24 border-t border-slate-800">
+  <section id="contact" class="py-24 border-t border-slate-900">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <p class="text-blue-400 font-semibold mb-3">CONTACT</p>
-      <h2 class="text-4xl md:text-5xl font-bold mb-6">Let’s connect.</h2>
+      <p class="text-blue-400 text-xs font-bold tracking-widest uppercase mb-2">Contact</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white tracking-tight">Let’s connect.</h2>
 
-      <p class="text-slate-400 text-lg mb-10">
-        I’m currently looking for data engineering, data platform, and MLOps infrastructure internship opportunities.
+      <p class="text-slate-400 text-sm max-w-lg mx-auto mb-10 leading-relaxed">
+        I’m currently looking for data engineering, data platform, and MLOps infrastructure opportunities. Feel free to reach out via email or connect on LinkedIn.
       </p>
 
-      <div class="flex justify-center gap-5 text-3xl">
+      <div class="flex justify-center gap-4 text-xl">
         <a href="https://github.com/Ericliu-eng" target="_blank"
-           class="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:text-blue-400 transition">
+           class="w-12 h-12 rounded-xl glass flex items-center justify-center text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700 transition">
           <i class="fab fa-github"></i>
         </a>
 
-        <a href="https://linkedin.com" target="_blank"
-           class="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:text-blue-400 transition">
+        <!-- ⚠️ 注意：请在此处替换为你真实的 LinkedIn 个人链接 -->
+        <a href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank"
+           class="w-12 h-12 rounded-xl glass flex items-center justify-center text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700 transition">
           <i class="fab fa-linkedin"></i>
         </a>
 
         <a href="mailto:liuxuhui905@gmail.com"
-           class="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:text-blue-400 transition">
+           class="w-12 h-12 rounded-xl glass flex items-center justify-center text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700 transition">
           <i class="fas fa-envelope"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <footer class="py-8 text-center text-sm text-slate-500 border-t border-slate-800">
+  <footer class="py-8 text-center text-xs text-slate-600 border-t border-slate-900">
     © 2026 Eric Liu • Built with Tailwind CSS
   </footer>
 
