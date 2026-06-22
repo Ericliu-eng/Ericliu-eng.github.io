@@ -1,35 +1,47 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Eric Liu — UC Berkeley Data Science student focused on reliable data pipelines, data quality, and platform engineering."
+  >
   <title>Eric Liu | Data Engineer</title>
 
   <style>
     :root {
-      --bg: #f6f8fb;
+      --bg: #f5f7fb;
+      --card: rgba(255, 255, 255, 0.88);
       --text: #0f172a;
       --muted: #64748b;
       --border: #dbe3ee;
-      --card: #ffffff;
       --blue: #2563eb;
+      --blue-dark: #1d4ed8;
       --soft-blue: #eff6ff;
+      --green: #16a34a;
       --dark: #0f172a;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.07);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color: var(--text);
       background:
-        linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+        radial-gradient(circle at 8% 2%, rgba(37, 99, 235, 0.10), transparent 28rem),
+        linear-gradient(rgba(37, 99, 235, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.035) 1px, transparent 1px),
         var(--bg);
-      background-size: 32px 32px;
+      background-size: auto, 32px 32px, 32px 32px, auto;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     }
 
     a {
@@ -37,138 +49,202 @@
       text-decoration: none;
     }
 
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.3);
+      outline-offset: 3px;
+    }
+
     .wrap {
-      max-width: 1080px;
+      width: min(1080px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 32px 22px;
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 42px;
+      padding: 28px 0;
     }
 
     .brand {
-      font-weight: 800;
       font-size: 18px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
     }
 
-    .links {
+    .nav-links,
+    .actions,
+    .tags {
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .links a,
+    .nav-links a,
     .btn {
-      border: 1px solid var(--border);
-      background: white;
       padding: 9px 13px;
+      border: 1px solid var(--border);
       border-radius: 12px;
+      background: rgba(255, 255, 255, 0.88);
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
+      transition: 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .btn:hover {
+      border-color: #b7c6da;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
     }
 
     .btn.primary {
-      background: var(--dark);
       color: white;
       border-color: var(--dark);
+      background: var(--dark);
+    }
+
+    .btn.primary:hover {
+      border-color: var(--blue-dark);
+      background: var(--blue-dark);
+    }
+
+    main {
+      padding: 18px 0 32px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
       gap: 18px;
       margin-bottom: 18px;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
-    }
-
-    h1 {
-      font-size: 46px;
-      line-height: 1.05;
-      letter-spacing: -0.05em;
-      margin: 0 0 16px;
-    }
-
-    h2 {
-      font-size: 20px;
-      margin: 0 0 16px;
-      letter-spacing: -0.03em;
-    }
-
-    h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-    }
-
-    p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
+    .hero-main {
+      padding: 34px;
     }
 
     .status {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--soft-blue);
+      margin-bottom: 20px;
+      padding: 7px 11px;
       color: var(--blue);
       border: 1px solid #bfdbfe;
       border-radius: 999px;
-      padding: 6px 10px;
+      background: var(--soft-blue);
       font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 18px;
+      font-weight: 800;
     }
 
-    .dot {
+    .status-dot {
       width: 8px;
       height: 8px;
-      background: #22c55e;
       border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.12);
+    }
+
+    h1 {
+      max-width: 700px;
+      margin: 0 0 18px;
+      font-size: clamp(42px, 6vw, 64px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 22px;
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      margin: 0 0 9px;
+      font-size: 17px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      font-size: 17px;
     }
 
     .actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 24px;
+      margin-top: 26px;
     }
 
-    .profile-grid {
+    .profile {
       display: grid;
       gap: 12px;
+      padding: 20px;
     }
 
-    .mini {
+    .profile-item,
+    .metric,
+    .check {
       border: 1px solid var(--border);
       background: #f8fafc;
+    }
+
+    .profile-item {
+      padding: 17px;
       border-radius: 16px;
-      padding: 16px;
     }
 
-    .mini strong {
+    .profile-item small {
       display: block;
-      font-size: 13px;
+      margin-bottom: 5px;
       color: var(--muted);
-      margin-bottom: 4px;
+      font-weight: 700;
     }
 
-    .mini span {
-      font-weight: 800;
+    .profile-item strong {
+      font-size: 16px;
     }
 
     .section {
       margin-bottom: 18px;
+      padding: 28px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 5px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .pipeline {
@@ -178,31 +254,52 @@
     }
 
     .stage {
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 16px 10px;
-      text-align: center;
-      font-weight: 800;
-      font-size: 13px;
       position: relative;
+      padding: 16px 8px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: #f8fafc;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
     }
 
     .stage:not(:last-child)::after {
       content: "→";
       position: absolute;
-      right: -12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #94a3b8;
-      font-weight: 700;
       z-index: 2;
+      top: 50%;
+      right: -13px;
+      color: #94a3b8;
+      transform: translateY(-50%);
     }
 
-    .dashboard {
+    .project-layout {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
       gap: 18px;
+    }
+
+    .project-copy {
+      padding: 30px;
+    }
+
+    .project-copy p {
+      max-width: 680px;
+    }
+
+    .tags {
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      color: #334155;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #f8fafc;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .metrics {
@@ -212,43 +309,48 @@
     }
 
     .metric {
-      border: 1px solid var(--border);
+      padding: 20px;
       border-radius: 18px;
-      padding: 18px;
-      background: #f8fafc;
     }
 
     .metric strong {
       display: block;
-      font-size: 28px;
-      color: var(--blue);
-      line-height: 1;
       margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 29px;
+      line-height: 1;
     }
 
     .metric span {
-      font-size: 13px;
       color: var(--muted);
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .engineering-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+      margin-bottom: 18px;
     }
 
     .terminal {
-      background: #0f172a;
-      color: #dbeafe;
-      border-radius: 18px;
       overflow: hidden;
-      font-size: 13px;
-      height: 100%;
+      min-height: 100%;
+      color: #dbeafe;
+      border-radius: 22px;
+      background: #0f172a;
+      box-shadow: var(--shadow);
     }
 
-    .bar {
+    .terminal-bar {
       display: flex;
       gap: 7px;
-      padding: 11px 13px;
+      padding: 13px 15px;
       background: #111827;
     }
 
-    .bar span {
+    .terminal-bar span {
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -257,36 +359,14 @@
 
     pre {
       margin: 0;
-      padding: 18px;
+      padding: 22px;
       overflow-x: auto;
-      line-height: 1.7;
+      font-size: 13px;
+      line-height: 1.75;
     }
 
     code {
       font-family: Consolas, "SFMono-Regular", monospace;
-    }
-
-    .project {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .tag {
-      padding: 6px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #f8fafc;
-      font-size: 13px;
-      font-weight: 600;
-      color: #334155;
     }
 
     .checks {
@@ -297,28 +377,59 @@
     .check {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
-      border: 1px solid var(--border);
-      background: #f8fafc;
+      gap: 16px;
+      padding: 13px 15px;
       border-radius: 14px;
-      padding: 12px 14px;
       font-size: 14px;
     }
 
     .check span {
       color: var(--muted);
+      text-align: right;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 28px;
+    }
+
+    .about-grid p + p {
+      margin-top: 12px;
+    }
+
+    .contact-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      color: white;
+      background: var(--dark);
+    }
+
+    .contact-card p {
+      max-width: 650px;
+      color: #cbd5e1;
+    }
+
+    .contact-card .btn {
+      flex: 0 0 auto;
+      color: var(--dark);
+      border-color: white;
+      background: white;
     }
 
     footer {
+      padding: 10px 0 30px;
       color: var(--muted);
       font-size: 13px;
-      padding: 20px 0 10px;
     }
 
     @media (max-width: 850px) {
       .hero,
-      .dashboard,
-      .project {
+      .project-layout,
+      .engineering-grid,
+      .about-grid {
         grid-template-columns: 1fr;
       }
 
@@ -330,8 +441,15 @@
         display: none;
       }
 
-      h1 {
-        font-size: 36px;
+      .contact-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .wrap {
+        width: min(100% - 26px, 1080px);
       }
 
       nav {
@@ -339,205 +457,326 @@
         flex-direction: column;
         gap: 16px;
       }
+
+      .hero-main,
+      .section,
+      .project-copy {
+        padding: 22px;
+      }
+
+      .profile {
+        padding: 14px;
+      }
+
+      .pipeline,
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
+    <nav aria-label="Primary navigation">
+      <a class="brand" href="#top">Eric Liu</a>
 
-    <!-- NAV -->
-    <nav>
-      <a class="brand" href="#">Eric Liu</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#project">Project</a>
+        <a
+          href="https://github.com/Ericliu-eng"
+          target="_blank"
+          rel="noopener noreferrer"
+        >GitHub</a>
 
-      <div class="links">
-        <a href="https://github.com/Ericliu-eng" target="_blank">GitHub</a>
-        <a href="./resume.pdf" target="_blank">Resume</a>
-        <a href="mailto:liuxuhui905@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/your-linkedin/" target="_blank">LinkedIn</a>
+        <!-- Replace this URL with your real LinkedIn address -->
+        <a
+          href="https://www.linkedin.com/in/REPLACE-ME/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >LinkedIn</a>
       </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="card">
-        <div class="status">
-          <span class="dot"></span>
-          Open to 2026 Data Engineering Internships
+    <main id="top">
+      <section class="hero">
+        <div class="card hero-main">
+          <div class="status">
+            <span class="status-dot" aria-hidden="true"></span>
+            Open to 2026 Data Engineering Internships
+          </div>
+
+          <h1>I build data systems that stay correct.</h1>
+
+          <p class="hero-copy">
+            UC Berkeley Data Science student focused on reliable pipelines,
+            incremental processing, data quality, orchestration, and
+            cloud-ready infrastructure.
+          </p>
+
+          <div class="actions">
+            <a
+              class="btn primary"
+              href="https://github.com/Ericliu-eng/de-lakehouse-pipeline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Explore My Main Project</a>
+
+            <a class="btn" href="./resume.pdf" target="_blank">View Resume</a>
+            <a class="btn" href="mailto:liuxuhui905@gmail.com">Email Me</a>
+          </div>
         </div>
 
-        <h1>Data pipelines, tested and production-minded.</h1>
+        <aside class="card profile" aria-label="Profile summary">
+          <div class="profile-item">
+            <small>Current focus</small>
+            <strong>Data Engineering</strong>
+          </div>
 
-        <p>
-          UC Berkeley Data Science student focused on data engineering, ETL reliability,
-          data quality, CI/CD, and cloud-ready infrastructure.
-        </p>
+          <div class="profile-item">
+            <small>Interested in</small>
+            <strong>Data Platforms · MLOps</strong>
+          </div>
 
-        <div class="actions">
-          <a class="btn primary" href="https://github.com/Ericliu-eng/de-lakehouse-pipeline" target="_blank">
-            View Main Project
-          </a>
-          <a class="btn" href="./resume.pdf" target="_blank">Resume</a>
+          <div class="profile-item">
+            <small>Core stack</small>
+            <strong>Python · SQL · PostgreSQL</strong>
+          </div>
+
+          <div class="profile-item">
+            <small>Engineering mindset</small>
+            <strong>Reliable · Testable · Observable</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section class="card section" aria-labelledby="pipeline-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Architecture</span>
+            <h2 id="pipeline-title">From raw payload to trusted data product</h2>
+          </div>
+
+          <p>Each stage has a clear responsibility and validation boundary.</p>
         </div>
-      </div>
 
-      <div class="card profile-grid">
-        <div class="mini">
-          <strong>Focus</strong>
-          <span>Data Engineering</span>
+        <div class="pipeline">
+          <div class="stage">Ingest</div>
+          <div class="stage">Stage</div>
+          <div class="stage">Increment</div>
+          <div class="stage">Warehouse</div>
+          <div class="stage">Quality</div>
+          <div class="stage">Marts</div>
+          <div class="stage">Serve</div>
+        </div>
+      </section>
+
+      <section id="project" class="project-layout">
+        <article class="card project-copy">
+          <span class="eyebrow">Featured project</span>
+          <h2>Market Data Lakehouse Pipeline</h2>
+
+          <p>
+            A production-style market-data pipeline that moves Alpha Vantage
+            payloads from raw JSON into an incremental PostgreSQL warehouse,
+            applies quality gates, builds analytical marts, and exposes curated
+            results through FastAPI and a lightweight dashboard.
+          </p>
+
+          <div class="tags" aria-label="Project technology">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Dagster</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Pytest</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">AWS S3</span>
+            <span class="tag">GitHub Actions</span>
+          </div>
+
+          <div class="actions">
+            <a
+              class="btn primary"
+              href="https://github.com/Ericliu-eng/de-lakehouse-pipeline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >View Repository</a>
+
+            <a
+              class="btn"
+              href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/blob/main/docs/ARCHITECTURE.md"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Architecture</a>
+
+            <a
+              class="btn"
+              href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/actions"
+              target="_blank"
+              rel="noopener noreferrer"
+            >CI Runs</a>
+          </div>
+        </article>
+
+        <div class="metrics" aria-label="Project highlights">
+          <div class="metric">
+            <strong>49+</strong>
+            <span>Automated tests</span>
+          </div>
+
+          <div class="metric">
+            <strong>7</strong>
+            <span>Pipeline stages</span>
+          </div>
+
+          <div class="metric">
+            <strong>5</strong>
+            <span>Quality safeguards</span>
+          </div>
+
+          <div class="metric">
+            <strong>3</strong>
+            <span>Analytical marts</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="engineering-grid">
+        <div class="terminal" aria-label="Example validation output">
+          <div class="terminal-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+
+          <pre><code>$ make test
+49 passed
+
+$ make orchestrate SYMBOL=AAPL
+ingest_stock          ✓
+run_quality_checks    ✓
+build_marts           ✓
+
+$ make terraform-validate
+terraform validation passed</code></pre>
         </div>
 
-        <div class="mini">
-          <strong>Target</strong>
-          <span>Data Platform / MLOps</span>
+        <div class="card section">
+          <span class="eyebrow">Reliability</span>
+          <h2>Designed for failure, not just the happy path</h2>
+
+          <div class="checks">
+            <div class="check">
+              <strong>Idempotency</strong>
+              <span>primary-key upserts</span>
+            </div>
+
+            <div class="check">
+              <strong>Incremental loading</strong>
+              <span>per-symbol watermarks</span>
+            </div>
+
+            <div class="check">
+              <strong>Data quality</strong>
+              <span>null, range, freshness</span>
+            </div>
+
+            <div class="check">
+              <strong>Recovery</strong>
+              <span>checkpointed backfills</span>
+            </div>
+
+            <div class="check">
+              <strong>Validation</strong>
+              <span>unit, smoke, integration</span>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="mini">
-          <strong>Core Stack</strong>
-          <span>Python · SQL · PostgreSQL · CI</span>
+      <section id="about" class="card section">
+        <div class="about-grid">
+          <div>
+            <span class="eyebrow">About</span>
+            <h2>Engineering beyond “it runs on my machine.”</h2>
+          </div>
+
+          <div>
+            <p>
+              I am a UC Berkeley Data Science student building practical data
+              systems with an emphasis on correctness, maintainability, and
+              clear operational boundaries.
+            </p>
+
+            <p>
+              I enjoy turning raw and unreliable inputs into trusted datasets:
+              defining schemas, handling incremental state, testing failure
+              modes, automating validation, and documenting how systems behave.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PIPELINE FLOW -->
-    <section class="card section">
-      <h2>Pipeline Flow</h2>
-
-      <div class="pipeline">
-        <div class="stage">Ingest</div>
-        <div class="stage">Validate</div>
-        <div class="stage">Load</div>
-        <div class="stage">Transform</div>
-        <div class="stage">Quality</div>
-        <div class="stage">Marts</div>
-        <div class="stage">CI</div>
-      </div>
-    </section>
-
-    <!-- DASHBOARD -->
-    <section class="dashboard section">
-      <div class="card">
-        <h2>Data Lakehouse Pipeline</h2>
-
-        <p>
-          End-to-end stock data pipeline that moves raw market data through validation,
-          PostgreSQL loading, incremental processing, data quality checks, analytics marts,
-          smoke tests, and GitHub Actions CI.
-        </p>
+      <section class="card section">
+        <span class="eyebrow">Skills</span>
+        <h2>Tools I use to build and validate data systems</h2>
 
         <div class="tags">
           <span class="tag">Python</span>
           <span class="tag">SQL</span>
           <span class="tag">PostgreSQL</span>
-          <span class="tag">ETL</span>
+          <span class="tag">ETL / ELT</span>
+          <span class="tag">Data Modeling</span>
+          <span class="tag">Incremental Loading</span>
+          <span class="tag">Data Quality</span>
+          <span class="tag">Dagster</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Docker</span>
           <span class="tag">Pytest</span>
           <span class="tag">GitHub Actions</span>
           <span class="tag">Terraform</span>
-          <span class="tag">Makefile</span>
+          <span class="tag">AWS Fundamentals</span>
+        </div>
+      </section>
+
+      <section class="card section contact-card">
+        <div>
+          <span class="eyebrow">Let’s connect</span>
+          <h2>Looking for a data engineering intern?</h2>
+          <p>
+            I would be glad to talk about data pipelines, platform engineering,
+            or internship opportunities.
+          </p>
         </div>
 
-        <div class="actions">
-          <a class="btn primary" href="https://github.com/Ericliu-eng/de-lakehouse-pipeline" target="_blank">GitHub</a>
-          <a class="btn" href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/blob/main/README.md" target="_blank">README</a>
-          <a class="btn" href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/actions" target="_blank">CI</a>
-          <a class="btn" href="https://github.com/Ericliu-eng/de-lakehouse-pipeline/tree/main/docs/proof" target="_blank">Proof Logs</a>
-        </div>
-      </div>
-
-      <div class="metrics">
-        <div class="metric">
-          <strong>49+</strong>
-          <span>Tests Passing</span>
-        </div>
-
-        <div class="metric">
-          <strong>CI</strong>
-          <span>GitHub Actions</span>
-        </div>
-
-        <div class="metric">
-          <strong>DQ</strong>
-          <span>Data Quality</span>
-        </div>
-
-        <div class="metric">
-          <strong>Smoke</strong>
-          <span>End-to-End Checks</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- TERMINAL + CHECKS -->
-    <section class="project section">
-      <div class="terminal">
-        <div class="bar">
-          <span></span><span></span><span></span>
-        </div>
-
-        <pre><code>$ make test
-49 passed
-
-$ make smoke
-pipeline smoke test passed
-
-$ make terraform-validate
-terraform fmt, init, validate passed</code></pre>
-      </div>
-
-      <div class="card">
-        <h2>Quality Checks</h2>
-
-        <div class="checks">
-          <div class="check">
-            <strong>Schema</strong>
-            <span>required fields</span>
-          </div>
-
-          <div class="check">
-            <strong>Freshness</strong>
-            <span>stale output</span>
-          </div>
-
-          <div class="check">
-            <strong>Uniqueness</strong>
-            <span>duplicate records</span>
-          </div>
-
-          <div class="check">
-            <strong>Range</strong>
-            <span>price / volume</span>
-          </div>
-
-          <div class="check">
-            <strong>Smoke</strong>
-            <span>end-to-end run</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="card section">
-      <h2>Skills</h2>
-
-      <div class="tags">
-        <span class="tag">Python</span>
-        <span class="tag">SQL</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">ETL Pipelines</span>
-        <span class="tag">Data Validation</span>
-        <span class="tag">Incremental Loading</span>
-        <span class="tag">Data Quality</span>
-        <span class="tag">Pytest</span>
-        <span class="tag">GitHub Actions</span>
-        <span class="tag">Terraform Basics</span>
-        <span class="tag">Docker Basics</span>
-        <span class="tag">Airflow / Dagster Learning</span>
-      </div>
-    </section>
+        <a class="btn" href="mailto:liuxuhui905@gmail.com">
+          liuxuhui905@gmail.com
+        </a>
+      </section>
+    </main>
 
     <footer>
-      © 2026 Eric Liu · Built with HTML and CSS
+      © 2026 Eric Liu · Built with semantic HTML and CSS
     </footer>
   </div>
 </body>
